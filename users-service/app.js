@@ -69,6 +69,27 @@ app.get("/users", async (req, res) => {
 })
 
 /**
+ * Find a user by his id
+ */
+ app.get("/users/:id", async (req, res) => {
+  const { id } = req.params
+
+  if (id) {
+    try {
+      const user = await User.findById(id)
+  
+      return res.json({ data: user })
+    } catch (err) {
+      console.log(err)
+  
+      return res.status(500).json({ error: "Something went wrong" })
+    }
+  }
+
+  return res.status(400).json({ error: "Provide all the required data" })
+})
+
+/**
  * Delete a user
  */
 app.delete("/users/:id", async (req, res) => {
