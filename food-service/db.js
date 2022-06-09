@@ -4,7 +4,7 @@ export const createConnection = async () => {
   try {
     mongoose.connect('mongodb://localhost/foods_db', { 
       useNewUrlParser: true,
-      autoIndex: true
+      autoIndex: true,
     });
 
     console.log("Database connected successfully");
